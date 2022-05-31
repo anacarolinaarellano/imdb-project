@@ -2,7 +2,7 @@
 import json
 import re
 
-from movie import Movie
+from movie import MovieBuilder
 class MovieList:
     def __init__(self, soup):
         #Get webpage information
@@ -23,7 +23,10 @@ class MovieList:
             place = movie[:len(str(index)) - (len(movie))]
 
             #Append json object
-            movieObj = Movie(movie_title, year, place, self.crew[index], self.ratings[index], self.votes[index], self.links[index], index % 4 + 1)
+            movieBuilder = MovieBuilder(movie_title, year, place, self.crew[index], self.ratings[index], self.links[index], index % 4 + 1)
+            if self.votes[index] != None:
+                movieBuilder.addVote(self.votes[index])
+            movieObj = movieBuilder.build()
             movieJson = movieObj.jsonFormat()
             self.list.append(movieJson)
         return self.list
