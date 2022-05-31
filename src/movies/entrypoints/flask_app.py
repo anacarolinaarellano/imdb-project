@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-from movies import models
+from movies import models, movie_fetcher
 import pandas as pd
 import os
 
@@ -17,6 +17,7 @@ def hello_world():
 
 @app.route("/movie-list", methods=["GET"])
 def movie_list():
+    movie_fetcher.main() #Get movies from API
     data = pd.read_csv(pathTotmp+'/movie_results.csv')
     order = request.args.get('order')
     if order=='desc':
