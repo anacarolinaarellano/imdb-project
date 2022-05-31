@@ -10,7 +10,7 @@ from sqlalchemy import (
     create_engine
 )
 from sqlalchemy.ext.declarative import declarative_base
-
+from sqlalchemy.orm import relationship
 
 def get_postgres_uri():
     host = os.environ.get("DB_HOST", "postgres")
@@ -20,19 +20,22 @@ def get_postgres_uri():
     return f"postgresql://{user}:{password}@{host}:{port}/{db_name}"
 
 
-Base = declarative_base(
-    metadata=MetaData(),
-)
-
-
 engine = create_engine(
     get_postgres_uri(),
     isolation_level="REPEATABLE READ",
 )
 
 
+Base = declarative_base()
+
+# Object Relational Mappers
 class Movie(Base):
     __tablename__ = "movies"
+
+    movie_id = Column(Integer, primary_key=True)
+
+class MovieLine(Base):
+    __tablename__ = "movie_line"
 
     movie_id = Column(Integer, primary_key=True)
     preference_key = Column(Integer)
@@ -40,6 +43,7 @@ class Movie(Base):
     rating = Column(Float)
     year = Column(Integer)
     create_time = Column(TIMESTAMP(timezone=True), index=True)
+    movie = relationship(Movie)
 
 
 def start_mappers():
