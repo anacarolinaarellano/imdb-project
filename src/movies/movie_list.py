@@ -4,7 +4,6 @@ import re
 
 from movie_builder import MovieBuilder
 
-# SOLID principle identified: Dependency inversion
 class MovieList:
     def __init__(self, soup):
         #Get webpage information

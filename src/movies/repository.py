@@ -2,6 +2,7 @@ import abc
 import model
 
 # Port AbstractRepository
+# SOLID principle identified: Liskov Substitution 
 class AbstractRepository(abc.ABC):
 
     @abc.abstractmethod

@@ -29,6 +29,7 @@ engine = create_engine(
 Base = declarative_base()
 
 # Object Relational Mappers
+# SOLID principle identified: Interface Segregation
 class Movie(Base):
     __tablename__ = "movies"
 
