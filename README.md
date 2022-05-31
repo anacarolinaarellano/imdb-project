@@ -1,6 +1,8 @@
 # Diseño y Arquitectura de Software: Proyecto Final
 ### **Por: Ana Carolina Arellano y Pamela Lozano**
 
+Documento con requerimientos y diagramas del proyecto: https://docs.google.com/document/d/1b01iOCu52O0maFAYQodnVeDaV2gEABjYwiEirU9Kq-0/edit?usp=sharing
+
 ## Running the project
 
 Project can be build using the following command:
