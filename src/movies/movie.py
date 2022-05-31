@@ -2,6 +2,7 @@
 import json
 import re
 
+# SOLID principle identified: Single Responsibility
 class Movie:
    def __init__(self, movie):
       self.movie_title = movie.movie_title
@@ -16,21 +17,3 @@ class Movie:
         jsonStr = json.dumps(self.__dict__)
         myJson = json.loads(jsonStr)
         return myJson
-
-class MovieBuilder:
-   def __init__(self, movie_title, year, place, star_cast, rating, link, preference_key):
-      self.movie_title = movie_title
-      self.year = year
-      self.place = place
-      self.star_cast = star_cast
-      self.rating = rating
-      self.link = link
-      self.preference_key = preference_key
-      self.vote=""
-
-   def addVote(self, vote):
-        self.vote = vote
-
-   def build(self):
-        movie = Movie(self)
-        return movie

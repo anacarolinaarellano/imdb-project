@@ -15,11 +15,14 @@ pathTotmp = os.path.abspath(os.path.join(__location__ ,".."))
 def hello_world():
     return "Hello World!!!", 200
 
+
+# ENDPOINT ADDED TO RETRIEVE THE MOVIE LIST
 @app.route("/movie-list", methods=["GET"])
 def movie_list():
     movie_fetcher.main() #Get movies from API
     data = pd.read_csv(pathTotmp+'/movie_results.csv')
     order = request.args.get('order')
+    # SORT ASCENDING / DESCENDING BASED ON ARGUMENT
     if order=='desc':
         data = data.sort_values(by='preference_key', ascending=False)
     if order=='asc':

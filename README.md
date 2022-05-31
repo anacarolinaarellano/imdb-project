@@ -27,4 +27,9 @@ You can recreate the database with the following command:
 
 You can access the project using the following url:
 
-http://localhost:5005/hello
+http://localhost:5005/movie-list
+
+To specify the order of the list:
+- http://localhost:5005/movie-list?order=desc 
+OR
+- http://localhost:5005/movie-list?order=asc
